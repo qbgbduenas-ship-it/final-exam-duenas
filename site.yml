@@ -1,0 +1,8 @@
+---
+
+- name: Install Nagios on VMs Ubuntu and CentOS
+  hosts: all
+  become: true
+
+  roles: 
+    - nagios

@@ -1,0 +1,9 @@
+---
+
+- name: Install nagios on Ubuntu
+  ansible.builtin.include_tasks: ubuntu.yml
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Install nagios on CentOS
+  ansible.builtin.include_tasks: centos.yml
+  when: ansible_facts['os_family'] == "RedHat"

@@ -1,0 +1,49 @@
+---
+
+- name: Install Centos ,  Playbook Managed by Beatriceduenas
+  ansible.builtin.dnf:
+    name:
+      - gcc
+      - glibc 
+      - glibc-common
+      - make
+      - gettext
+      - automake
+      - autoconf
+      - wget
+      - openssl-devel
+      - net-snmp
+      - net-snmp-utils
+      - httpd
+      - php
+      - gd
+      - perl
+      - tar 
+      - unzip
+    state: present
+
+- name: Create Nagios group
+  ansible.builtin.group:
+    name: nagios
+    state: present
+
+- name: Create Nagios user
+  ansible.builtin.user:
+    name: nagios
+    group: nagios
+    shell: /bin/bash
+    state: present
+
+- name: Add nagios user to nagcmd
+  ansible.builtin.user:
+    name: nagios
+    groups: nagcmd
+    append: true
+
+- name: Add apache user to nagcmd
+  ansible.builtin.user:
+    name: apache
+    groups: nagcmd
+    append: true
+
+

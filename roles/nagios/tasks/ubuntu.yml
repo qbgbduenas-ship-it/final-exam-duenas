@@ -1,0 +1,27 @@
+---
+
+- name: Ansible managed by beatriceduenas , Update ubuntu package
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 3600
+
+- name: Install nagios core and required packages
+  ansible.builtin.apt:
+    name:
+      - nagios4
+      - nagios-plugins-contrib
+      - apache2
+    state: present
+
+- name: Enable / Start apache
+  ansible.builtin.service:
+    name: apache2
+    state: started
+    enabled: true
+
+- name: ENable and start nagios
+  ansible.builtin.service:
+    name: nagios4
+    state: started
+    enabled: true
+
