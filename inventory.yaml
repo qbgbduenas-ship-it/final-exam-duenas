@@ -1,0 +1,4 @@
+[all]
+
+192.168.56.116 ansible_user=beatriceduenas
+192.168.56.111 ansoble_user=beatriceduenas
